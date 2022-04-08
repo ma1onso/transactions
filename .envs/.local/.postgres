@@ -1,0 +1,7 @@
+# PostgreSQL
+# ------------------------------------------------------------------------------
+POSTGRES_HOST=postgres
+POSTGRES_PORT=5432
+POSTGRES_DB=tompany
+POSTGRES_USER=SsWvrnOxiVcsyBDkqpBoaRtyWpImBhPA
+POSTGRES_PASSWORD=0AgUc7GnTd1g5vZEGGxN30DBHjLdsDmYLLRSrIcLnmClyNEo22Ref0gYIxxrOF4g
