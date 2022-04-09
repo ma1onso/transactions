@@ -23,6 +23,15 @@ Import the swagger.json file to the Postman application
 - PATCH /api/companies/{id}/transfer_transactions/{target_company_id}/
 - GET /api/transactions/resume/
 
+## Django admin
+Create a super user (docker-compose -f local.yml run --rm django python manage.py createsuperuser) and login in http://localhost:8000/admin/
+
+## Explore the endpoints using the swagger ui
+http://localhost:8000/swagger/
+
+![Peek 2022-04-09 18-10](https://user-images.githubusercontent.com/1877511/162594539-6cf85d3d-2596-47d9-a879-381bc9ff21b6.gif)
+
+
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
