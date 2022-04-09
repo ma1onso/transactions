@@ -23,7 +23,7 @@ Import the swagger.json file to the Postman application
 - PATCH /api/companies/{id}/transfer_transactions/{target_company_id}/
 - GET /api/transactions/resume/
 
-## Settings
+### Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
