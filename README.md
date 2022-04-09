@@ -8,18 +8,18 @@ The future is now!
 License: MIT
 
 ## How to run the project?
-docker-compose -f local.yml up
+`docker-compose -f local.yml up`
 
 ## How to run the unit tests?
-docker-compose -f local.yml run django pytest
+`docker-compose -f local.yml run django pytest`
 
 ## How to test endpoints in Postman?
 Import the swagger.json file to the Postman application
 
 ## Important endpoints
-GET ​/api​/companies​/{id}​/transactions_resume​/
-PATCH /api/companies/{id}/transfer_transactions/{target_company_id}/
-GET /api/transactions/resume/
+- GET ​/api​/companies​/{id}​/transactions_resume​/
+- PATCH /api/companies/{id}/transfer_transactions/{target_company_id}/
+- GET /api/transactions/resume/
 
 ## Settings
 
