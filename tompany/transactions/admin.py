@@ -1,3 +1,15 @@
 from django.contrib import admin
 
-# Register your models here.
+from tompany.transactions.models import Transaction
+
+
+@admin.register(Transaction)
+class TransactionAdmin(admin.ModelAdmin):
+    list_display = ('id', 'price', 'date_time',)
+    list_filter = ('company__name',)
+    raw_id_fields = ('company',)
+
+
+class InlineTransaction(admin.TabularInline):
+    model = Transaction
+    extra = 0

@@ -1,3 +1,12 @@
 from django.contrib import admin
 
-# Register your models here.
+from tompany.companies.models import Company
+from tompany.transactions.admin import InlineTransaction
+
+
+@admin.register(Company)
+class CompanyAdmin(admin.ModelAdmin):
+    list_display = ('name', 'is_active',)
+    search_fields = ('name',)
+    list_filter = ('is_active', 'is_orphan', )
+    inlines = [InlineTransaction]

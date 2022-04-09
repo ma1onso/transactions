@@ -16,3 +16,6 @@ class Company(TimeStampedModel):
     )
 
     objects = CompanyManager()
+
+    def __str__(self):
+        return self.name
