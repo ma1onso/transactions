@@ -8,5 +8,5 @@ from tompany.transactions.admin import InlineTransaction
 class CompanyAdmin(admin.ModelAdmin):
     list_display = ('id', 'name', 'is_active',)
     search_fields = ('name',)
-    list_filter = ('is_active', 'is_orphan', )
+    list_filter = ('is_active', )
     inlines = [InlineTransaction]

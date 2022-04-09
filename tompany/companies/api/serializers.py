@@ -21,3 +21,7 @@ class CompanyTransactionResumeSerializer(Serializer):
     total_transactions_charged = serializers.FloatField()
     total_transactions_not_charged = serializers.FloatField()
     date_with_more_transactions = serializers.DateField()
+
+
+class EmptySerializer(Serializer):
+    pass

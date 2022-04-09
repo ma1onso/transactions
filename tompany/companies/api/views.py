@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.viewsets import GenericViewSet
 
 from tompany.companies.api.serializers import CompanyReadSerializer, CompanyWriteSerializer, \
-    CompanyTransactionResumeSerializer
+    CompanyTransactionResumeSerializer, EmptySerializer
 from tompany.companies.models import Company
 from tompany.transactions.models import Transaction
 from tompany.utils import ReadWriteSerializerMixin
@@ -24,8 +24,7 @@ class CompanyViewSet(
     write_serializer_class = CompanyWriteSerializer
     permission_classes = [IsAuthenticated]
 
-    # TODO: add Serializer to swagger
-    @swagger_auto_schema(method='GET', responses={200: 'success'})
+    @swagger_auto_schema(method='GET', responses={200: CompanyTransactionResumeSerializer})
     @action(methods=['GET'], detail=True)
     def transaction_resume(self, request, *args, **kwargs):
         self.serializer_class = CompanyTransactionResumeSerializer
@@ -38,7 +37,7 @@ class CompanyViewSet(
 
         return Response(serializer.data)
 
-    @swagger_auto_schema(method='PATCH', request_body=None)
+    @swagger_auto_schema(method='PATCH', request_body=EmptySerializer)
     @action(methods=['PATCH'], detail=True, url_path='transfer_transactions/(?P<target_company_id>\w+)')
     def transfer_transactions(self, request, *args, **kwargs):
         """ Transfer transactions from one company to another

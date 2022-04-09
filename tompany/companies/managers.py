@@ -6,9 +6,4 @@ class CompanyManager(Manager):
     def create_orphan(self):
         """ Create a new company without name
         """
-        return self.get_or_create(
-            name=settings.ORPHAN_COMPANY_NAME,
-            defaults={
-                'is_orphan': True,
-            }
-        )
+        return self.get_or_create(name=settings.ORPHAN_COMPANY_NAME,)
