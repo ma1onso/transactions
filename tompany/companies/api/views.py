@@ -18,6 +18,3 @@ class CompanyViewSet(
     read_serializer_class = CompanyReadSerializer
     write_serializer_class = CompanyWriteSerializer
     permission_classes = [IsAuthenticated]
-
-    def get_queryset(self):
-        return Company.objects.all()

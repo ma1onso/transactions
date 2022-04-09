@@ -1,6 +1,8 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
 
+from tompany.transactions.managers import TransactionManager
+
 
 class Transaction(TimeStampedModel):
     class Status(models.TextChoices):
@@ -36,6 +38,8 @@ class Transaction(TimeStampedModel):
         on_delete=models.CASCADE,
         related_name='transactions',
     )
+
+    objects = TransactionManager()
 
     def is_paid(self):
         if self.status == self.Status.CLOSED and self.approval_status == self.ApprovalStatus.CHARGED:
