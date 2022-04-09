@@ -17,6 +17,10 @@ License: MIT
 Import the swagger.json file to the Postman application
 ![Peek 2022-04-09 17-48](https://user-images.githubusercontent.com/1877511/162594066-ede013d8-31d7-440a-aa26-42c6051e1428.gif)
 
+## Custom commands
+- `docker-compose -f local.yml run --rm django python manage.py load_companies` [--csv_file_path, --debug_mode]
+- `docker-compose -f local.yml run --rm django python manage.py load_transactions` [--csv_file_path, --debug_mode]
+
 
 ## Important endpoints
 - GET ​/api​/companies​/{id}​/transactions_resume​/
