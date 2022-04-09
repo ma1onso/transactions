@@ -15,6 +15,8 @@ License: MIT
 
 ## How to test endpoints in Postman?
 Import the swagger.json file to the Postman application
+![Peek 2022-04-09 17-48](https://user-images.githubusercontent.com/1877511/162594066-ede013d8-31d7-440a-aa26-42c6051e1428.gif)
+
 
 ## Important endpoints
 - GET ​/api​/companies​/{id}​/transactions_resume​/
