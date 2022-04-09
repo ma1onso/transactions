@@ -7,6 +7,8 @@ class Transaction(TimeStampedModel):
         CLOSED = 'closed', 'Closed'
         REVERSED = 'reversed', 'Reversed'
         PENDING = 'pending', 'Pending'
+        FUNDING = 'funding', 'Funding'
+        FUNDING_USER = 'funding_user', 'Funding User'
 
     class ApprovalStatus(models.TextChoices):
         CHARGED = 'charged', 'Charged'

@@ -304,3 +304,4 @@ SPECTACULAR_SETTINGS = {
 }
 # Your stuff...
 # ------------------------------------------------------------------------------
+ORPHAN_COMPANY_NAME = "Orphan_company"

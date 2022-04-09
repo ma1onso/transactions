@@ -1,12 +1,10 @@
 import csv
 
-from django.core.management import BaseCommand
-
-from tompany.companies.mixins import TransactionCSVCommandMixin
+from tompany.utils import TransactionCSVCommand
 from tompany.companies.models import Company
 
 
-class Command(BaseCommand, TransactionCSVCommandMixin):
+class Command(TransactionCSVCommand):
     help = 'This command read a CSV transactions file and only save the companies to the database'
 
     def handle(self, *args, **options):
@@ -30,7 +28,9 @@ class Command(BaseCommand, TransactionCSVCommandMixin):
 
                 self.create_companies(company_names)
 
-        self.stdout.write(self.style.SUCCESS('Command load_companies successfully executed'))
+        self.stdout.write(self.style.SUCCESS(
+            f'Command load_companies successfully executed. Debug mode: {options["debug_mode"]}'
+        ))
 
     def create_orphan_company(self):
         Company.objects.create_orphan()
