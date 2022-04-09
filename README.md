@@ -23,11 +23,11 @@ Import the swagger.json file to the Postman application
 - PATCH /api/companies/{id}/transfer_transactions/{target_company_id}/
 - GET /api/transactions/resume/
 
-### Settings
+## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
-### Sentry
+## Sentry
 
 Sentry is an error logging aggregator service. You can sign up for a free account at <https://sentry.io/signup/?code=cookiecutter> or download and host it yourself.
 The system is set up with reasonable defaults, including 404 logging and integration with the WSGI application.
