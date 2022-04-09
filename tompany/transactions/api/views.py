@@ -23,7 +23,7 @@ class TransactionViewSet(
     write_serializer_class = CompanyWriteSerializer
     permission_classes = [IsAuthenticated]
 
-    @swagger_auto_schema(method='GET', responses={200: 'success'})
+    @swagger_auto_schema(method='GET', responses={200: TransactionResumeSerializer})
     @action(methods=['GET'], detail=False)
     def resume(self, request, *args, **kwargs):
         self.serializer_class = TransactionResumeSerializer
