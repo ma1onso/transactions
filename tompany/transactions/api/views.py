@@ -14,11 +14,9 @@ from tompany.utils import ReadWriteSerializerMixin
 class TransactionViewSet(
     ReadWriteSerializerMixin,
     GenericViewSet,
-    mixins.CreateModelMixin,
     mixins.UpdateModelMixin,
     mixins.RetrieveModelMixin,
     mixins.ListModelMixin,
-    mixins.DestroyModelMixin
 ):
     queryset = Transaction.objects.all()
     read_serializer_class = CompanyReadSerializer

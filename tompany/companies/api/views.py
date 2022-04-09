@@ -24,6 +24,7 @@ class CompanyViewSet(
     write_serializer_class = CompanyWriteSerializer
     permission_classes = [IsAuthenticated]
 
+    # TODO: add Serializer to swagger
     @swagger_auto_schema(method='GET', responses={200: 'success'})
     @action(methods=['GET'], detail=True)
     def transaction_resume(self, request, *args, **kwargs):
@@ -36,3 +37,19 @@ class CompanyViewSet(
         serializer = CompanyTransactionResumeSerializer(company_resume)
 
         return Response(serializer.data)
+
+    @swagger_auto_schema(method='PATCH', request_body=None)
+    @action(methods=['PATCH'], detail=True, url_path='transfer_transactions/(?P<target_company_id>\w+)')
+    def transfer_transactions(self, request, *args, **kwargs):
+        """ Transfer transactions from one company to another
+        """
+        company = self.get_object()
+        target_company_id = kwargs.get('target_company_id')
+
+        if not target_company_id:
+            return Response({'error': 'target_company_id is required'}, status=400)
+
+        target_company = Company.objects.get(pk=target_company_id)
+        company.transactions.update(company=target_company)
+
+        return Response(f'Transactions transferred successfully, from {company.name} to {target_company.name}')
