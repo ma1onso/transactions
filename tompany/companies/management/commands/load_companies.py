@@ -24,7 +24,7 @@ class Command(BaseCommand):
 
             company_names = []
             for row in csv_reader:
-                company_names.append(row['company'])
+                company_names.append(row['company'].lower())
 
             company_names = list(set(company_names))
 
