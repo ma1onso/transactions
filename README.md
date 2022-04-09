@@ -28,7 +28,7 @@ Import the swagger.json file to the Postman application
 - GET /api/transactions/resume/
 
 ## Django admin
-Create a super user (docker-compose -f local.yml run --rm django python manage.py createsuperuser) and login in http://localhost:8000/admin/
+Create a super user (`docker-compose -f local.yml run --rm django python manage.py createsuperuser`) and login in http://localhost:8000/admin/
 
 ## Explore the endpoints using the swagger ui
 http://localhost:8000/swagger/
