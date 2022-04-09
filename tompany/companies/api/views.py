@@ -26,7 +26,7 @@ class CompanyViewSet(
 
     @swagger_auto_schema(method='GET', responses={200: CompanyTransactionResumeSerializer})
     @action(methods=['GET'], detail=True)
-    def transaction_resume(self, request, *args, **kwargs):
+    def transactions_resume(self, request, *args, **kwargs):
         self.serializer_class = CompanyTransactionResumeSerializer
 
         company = self.get_object()
