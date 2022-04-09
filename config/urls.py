@@ -11,31 +11,30 @@ from rest_framework import permissions
 from rest_framework.authtoken.views import obtain_auth_token
 
 schema_view = get_schema_view(
-   openapi.Info(
-      title="Tompany API",
-      default_version='v1',
-      description="Tompany",
-      terms_of_service="https://www.google.com/policies/terms/",
-      contact=openapi.Contact(email="contact@snippets.local"),
-      license=openapi.License(name="MIT License"),
-   ),
-   public=True,
-   permission_classes=[permissions.AllowAny],
+    openapi.Info(
+        title="Tompany API",
+        default_version='v1',
+        description="Tompany",
+        terms_of_service="https://www.google.com/policies/terms/",
+        contact=openapi.Contact(email="contact@snippets.local"),
+        license=openapi.License(name="MIT License"),
+    ),
+    public=True,
+    permission_classes=[permissions.AllowAny],
 )
 
-
 urlpatterns = [
-    path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
-    path(
-        "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
-    ),
-    # Django Admin, use {% url 'admin:index' %}
-    path(settings.ADMIN_URL, admin.site.urls),
-    # User management
-    path("users/", include("tompany.users.urls", namespace="users")),
-    path("accounts/", include("allauth.urls")),
-    # Your stuff: custom urls includes go here
-] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
+                  path("", TemplateView.as_view(template_name="pages/home.html"), name="home"),
+                  path(
+                      "about/", TemplateView.as_view(template_name="pages/about.html"), name="about"
+                  ),
+                  # Django Admin, use {% url 'admin:index' %}
+                  path(settings.ADMIN_URL, admin.site.urls),
+                  # User management
+                  path("users/", include("tompany.users.urls", namespace="users")),
+                  path("accounts/", include("allauth.urls")),
+                  # Your stuff: custom urls includes go here
+              ] + static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
 # API URLS
 urlpatterns += [
