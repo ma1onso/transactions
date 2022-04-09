@@ -16,13 +16,13 @@ class TransactionManager(BaseUserManager):
         try:
             return self.company_sales().order_by('-price__sum').first()['company__name']
         except TypeError:
-            return 0
+            return ""
 
     def company_with_less_sales(self):
         try:
             self.company_sales().order_by('price__sum').first()['company__name']
         except TypeError:
-            return 0
+            return ""
 
     def total_transactions_charged(self):
         try:
@@ -42,7 +42,7 @@ class TransactionManager(BaseUserManager):
                 Sum('price')
             ).order_by('-price__sum').first()['company__name']
         except TypeError:
-            return 0
+            return ""
 
     def transactions_charged(self):
         from tompany.transactions.models import Transaction
