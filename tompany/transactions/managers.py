@@ -1,6 +1,5 @@
 from django.contrib.auth.base_user import BaseUserManager
 from django.db.models import Sum, Count
-from django.db.models.functions import Coalesce
 
 
 class TransactionManager(BaseUserManager):
@@ -14,21 +13,36 @@ class TransactionManager(BaseUserManager):
         }
 
     def company_with_more_sales(self):
-        return self.company_sales().order_by('-price__sum').first()['company__name']
+        try:
+            return self.company_sales().order_by('-price__sum').first()['company__name']
+        except TypeError:
+            return 0
 
     def company_with_less_sales(self):
-        return self.company_sales().order_by('price__sum').first()['company__name']
+        try:
+            self.company_sales().order_by('price__sum').first()['company__name']
+        except TypeError:
+            return 0
 
     def total_transactions_charged(self):
-        return self.transactions_charged().aggregate(Sum('price'))['price__sum']
+        try:
+            return self.transactions_charged().aggregate(Sum('price'))['price__sum']
+        except TypeError:
+            return 0
 
     def total_transactions_not_charged(self):
-        return self.transactions_not_charged().aggregate(Sum('price'))['price__sum']
+        try:
+            return self.transactions_not_charged().aggregate(Sum('price'))['price__sum']
+        except TypeError:
+            return 0
 
     def company_with_more_transactions_not_charged(self):
-        return self.transactions_not_charged().values('company__name').annotate(
-            Sum('price')
-        ).order_by('-price__sum').first()['company__name']
+        try:
+            return self.transactions_not_charged().values('company__name').annotate(
+                Sum('price')
+            ).order_by('-price__sum').first()['company__name']
+        except TypeError:
+            return 0
 
     def transactions_charged(self):
         from tompany.transactions.models import Transaction
