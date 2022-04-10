@@ -7,45 +7,40 @@ The future is now!
 
 License: MIT
 
+## How to run the project?
+`docker-compose -f local.yml up`
+
+## How to run the unit tests?
+`docker-compose -f local.yml run django pytest`
+
+## How to test endpoints in Postman?
+Import the swagger.json file to the Postman application
+![Peek 2022-04-09 17-48](https://user-images.githubusercontent.com/1877511/162594066-ede013d8-31d7-440a-aa26-42c6051e1428.gif)
+
+## Custom commands
+- `docker-compose -f local.yml run --rm django python manage.py load_companies` [--csv_file_path, --debug_mode]
+- `docker-compose -f local.yml run --rm django python manage.py load_transactions` [--csv_file_path, --debug_mode]
+
+
+## Important endpoints
+- GET ​/api​/companies​/{id}​/transactions_resume​/
+- PATCH /api/companies/{id}/transfer_transactions/{target_company_id}/
+- GET /api/transactions/resume/
+
+## Django admin
+Create a super user (`docker-compose -f local.yml run --rm django python manage.py createsuperuser`) and login in http://localhost:8000/admin/
+
+## Explore the endpoints using the swagger ui
+http://localhost:8000/swagger/
+
+![Peek 2022-04-09 18-10](https://user-images.githubusercontent.com/1877511/162594539-6cf85d3d-2596-47d9-a879-381bc9ff21b6.gif)
+
+
 ## Settings
 
 Moved to [settings](http://cookiecutter-django.readthedocs.io/en/latest/settings.html).
 
-## Basic Commands
-
-### Setting Up Your Users
-
--   To create a **normal user account**, just go to Sign Up and fill out the form. Once you submit it, you'll see a "Verify Your E-mail Address" page. Go to your console to see a simulated email verification message. Copy the link into your browser. Now the user's email should be verified and ready to go.
-
--   To create a **superuser account**, use this command:
-
-        $ python manage.py createsuperuser
-
-For convenience, you can keep your normal user logged in on Chrome and your superuser logged in on Firefox (or similar), so that you can see how the site behaves for both kinds of users.
-
-### Type checks
-
-Running type checks with mypy:
-
-    $ mypy tompany
-
-### Test coverage
-
-To run the tests, check your test coverage, and generate an HTML coverage report:
-
-    $ coverage run -m pytest
-    $ coverage html
-    $ open htmlcov/index.html
-
-#### Running tests with pytest
-
-    $ pytest
-
-### Live reloading and Sass CSS compilation
-
-Moved to [Live reloading and SASS compilation](https://cookiecutter-django.readthedocs.io/en/latest/developing-locally.html#sass-compilation-live-reloading).
-
-### Sentry
+## Sentry
 
 Sentry is an error logging aggregator service. You can sign up for a free account at <https://sentry.io/signup/?code=cookiecutter> or download and host it yourself.
 The system is set up with reasonable defaults, including 404 logging and integration with the WSGI application.
