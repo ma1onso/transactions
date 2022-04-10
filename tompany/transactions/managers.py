@@ -1,8 +1,8 @@
-from django.contrib.auth.base_user import BaseUserManager
+from django.db.models import Manager
 from django.db.models import Sum, Count
 
 
-class TransactionManager(BaseUserManager):
+class TransactionManager(Manager):
     def resume(self):
         return {
             "company_with_more_sales": self.company_with_more_sales(),
@@ -20,7 +20,7 @@ class TransactionManager(BaseUserManager):
 
     def company_with_less_sales(self):
         try:
-            self.company_sales().order_by('price__sum').first()['company__name']
+            return self.company_sales().order_by('price__sum').first()['company__name']
         except TypeError:
             return ""
 
@@ -44,7 +44,7 @@ class TransactionManager(BaseUserManager):
         except TypeError:
             return ""
 
-    def transactions_charged(self):
+    def transactions_charged(self, exclude_inactive_companies):
         from tompany.transactions.models import Transaction
 
         return self.filter(
