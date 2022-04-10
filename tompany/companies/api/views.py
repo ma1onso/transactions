@@ -23,6 +23,7 @@ class CompanyViewSet(
     read_serializer_class = CompanyReadSerializer
     write_serializer_class = CompanyWriteSerializer
     permission_classes = [IsAuthenticated]
+    filterset_fields = ["is_active", ]
 
     @swagger_auto_schema(method='GET', responses={200: CompanyTransactionResumeSerializer})
     @action(methods=['GET'], detail=True)
