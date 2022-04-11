@@ -81,7 +81,7 @@ class TransactionManager(Manager):
     def date_with_more_transactions(self, company_id):
         return self.filter(company_id=company_id).values(
             'date_time__date'
-        ).annotate(Count('id')).order_by('-id__count').first()['date_time__date']
+        ).annotate(Count('pk')).order_by('-pk__count').first()['date_time__date']
 
 
 class ActiveTransactionManager(TransactionManager):

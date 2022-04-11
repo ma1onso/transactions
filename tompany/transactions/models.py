@@ -1,3 +1,5 @@
+import uuid
+
 from django.db import models
 from model_utils.models import TimeStampedModel
 
@@ -15,6 +17,8 @@ class Transaction(TimeStampedModel):
     class ApprovalStatus(models.TextChoices):
         CHARGED = 'charged', 'Charged'
         NOT_CHARGED = 'not_charged', 'Not Charged'
+
+    uuid = models.UUIDField(primary_key=True, default=uuid.uuid4, editable=False)
 
     price = models.DecimalField(
         max_digits=10, decimal_places=2
