@@ -44,7 +44,7 @@ class TransactionManager(Manager):
         except TypeError:
             return ""
 
-    def transactions_charged(self, exclude_inactive_companies):
+    def transactions_charged(self):
         from tompany.transactions.models import Transaction
 
         return self.filter(
