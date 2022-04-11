@@ -82,3 +82,8 @@ class TransactionManager(Manager):
         return self.filter(company_id=company_id).values(
             'date_time__date'
         ).annotate(Count('id')).order_by('-id__count').first()['date_time__date']
+
+
+class ActiveTransactionManager(TransactionManager):
+    def get_queryset(self):
+        return super().get_queryset().exclude(company__is_active=False)

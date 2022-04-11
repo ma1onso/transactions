@@ -1,7 +1,7 @@
 from django.db import models
 from model_utils.models import TimeStampedModel
 
-from tompany.transactions.managers import TransactionManager
+from tompany.transactions.managers import TransactionManager, ActiveTransactionManager
 
 
 class Transaction(TimeStampedModel):
@@ -40,6 +40,7 @@ class Transaction(TimeStampedModel):
     )
 
     objects = TransactionManager()
+    objects_active = ActiveTransactionManager()
 
     def is_paid(self):
         if self.status == self.Status.CLOSED and self.approval_status == self.ApprovalStatus.CHARGED:
