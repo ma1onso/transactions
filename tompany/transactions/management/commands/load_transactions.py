@@ -39,7 +39,7 @@ class Command(TransactionCSVCommand):
 
             transaction, created = Transaction.objects.get_or_create(
                 company=company,
-                price=row['price'],
+                price=int(row['price']) / 100,  # The value in the CSV file is in cents
                 # TODO: this datetime 2021-05-23 21:53:54.764859-05 is store as 2021-05-24
                 date_time=parser.parse(row['date']),
                 status=row['status_transaction'],
